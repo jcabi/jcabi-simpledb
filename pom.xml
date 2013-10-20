@@ -53,12 +53,6 @@
         <developerConnection>scm:git:github.com:jcabi/jcabi-simpledb.git</developerConnection>
         <url>https://github.com/jcabi/jcabi-simpledb</url>
     </scm>
-    <repositories>
-        <repository>
-            <id>jcabi-simpledbdb-maven-plugin</id>
-            <url>http://repo.jcabi.com/releases</url>
-        </repository>
-    </repositories>
     <distributionManagement>
         <site>
             <id>www.jcabi.com</id>
