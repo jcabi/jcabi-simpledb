@@ -155,7 +155,7 @@ final class AwsItem implements Item {
     public String get(final Object key) {
         final Set<Entry<String, String>> entries = this.entrySet();
         String value = null;
-        for (Entry<String, String> entry : entries) {
+        for (final Entry<String, String> entry : entries) {
             if (entry.getKey().equals(key)) {
                 value = entry.getValue();
             }
@@ -199,7 +199,7 @@ final class AwsItem implements Item {
     public void putAll(final Map<? extends String, ? extends String> map) {
         final Collection<ReplaceableAttribute> attrs =
             new ArrayList<ReplaceableAttribute>(map.size());
-        for (Map.Entry<?, ?> entry : map.entrySet()) {
+        for (final Map.Entry<?, ?> entry : map.entrySet()) {
             attrs.add(
                 new ReplaceableAttribute()
                     .withName(entry.getKey().toString())
@@ -234,7 +234,7 @@ final class AwsItem implements Item {
     public Set<String> keySet() {
         final Set<Entry<String, String>> entries = this.entrySet();
         final Set<String> keys = new HashSet<String>(entries.size());
-        for (Entry<String, String> entry : entries) {
+        for (final Entry<String, String> entry : entries) {
             keys.add(entry.getValue());
         }
         return keys;
@@ -247,7 +247,7 @@ final class AwsItem implements Item {
     public Collection<String> values() {
         final Set<Entry<String, String>> entries = this.entrySet();
         final Collection<String> values = new ArrayList<String>(entries.size());
-        for (Entry<String, String> entry : entries) {
+        for (final Entry<String, String> entry : entries) {
             values.add(entry.getValue());
         }
         return values;
@@ -267,7 +267,7 @@ final class AwsItem implements Item {
         );
         final Set<Entry<String, String>> entries =
             new HashSet<Entry<String, String>>(0);
-        for (Attribute attr : result.getAttributes()) {
+        for (final Attribute attr : result.getAttributes()) {
             entries.add(
                 new AbstractMap.SimpleImmutableEntry<String, String>(
                     attr.getName(), attr.getValue()

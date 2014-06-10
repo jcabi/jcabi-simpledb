@@ -1,8 +1,9 @@
 <img src="http://img.jcabi.com/logo-square.png" width="64px" height="64px" />
- 
-[![Build Status](https://travis-ci.org/jcabi/jcabi-simpledb.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-simpledb)
 
-More details are here: [www.jcabi.com/jcabi-simpledb](http://www.jcabi.com/jcabi-simpledb/index.html)
+[![Build Status](https://travis-ci.org/jcabi/jcabi-simpledb.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-simpledb)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
+
+More details are here: [simpledb.jcabi.com](http://simpledb.jcabi.com/index.html)
 
 Set of classes in `com.jcabi.simpledb`
 is an object layer on top of
@@ -25,21 +26,10 @@ public class Main {
 }
 ```
 
-You need just this dependency:
-
-```xml
-<dependency>
-  <groupId>com.jcabi</groupId>
-  <artifactId>jcabi-simpledb</artifactId>
-  <version>0.1</version>
-</dependency>
-```
-
 ## Questions?
 
 If you have any questions about the framework, or something doesn't work as expected,
 please [submit an issue here](https://github.com/yegor256/jcabi/issues/new).
-If you want to discuss, please use our [Google Group](https://groups.google.com/forum/#!forum/jcabi).
 
 ## How to contribute?
 
