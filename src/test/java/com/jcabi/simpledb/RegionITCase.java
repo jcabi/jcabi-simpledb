@@ -58,14 +58,6 @@ public final class RegionITCase {
         System.getProperty("failsafe.sdb.secret");
 
     /**
-     * Domain name to work with.
-     */
-    private static final String NAME = String.format(
-        "jcabi-test-%s",
-        RandomStringUtils.randomAlphabetic(5)
-    );
-
-    /**
      * Region.Simple can put and remove individual items.
      * @throws Exception If some problem inside
      */
@@ -97,9 +89,9 @@ public final class RegionITCase {
      */
     @Test
     public void selectsMultipleItems() throws Exception {
-        final String attr = "alpha";
         final Domain domain = this.domain();
         try {
+            final String attr = "alpha";
             domain.item("first").put(attr, "val-99");
             domain.item("second").put("beta", "");
             MatcherAssert.assertThat(
@@ -152,7 +144,12 @@ public final class RegionITCase {
         final Region region = new Region.Simple(
             new Credentials.Simple(RegionITCase.KEY, RegionITCase.SECRET)
         );
-        final Domain domain = region.domain(RegionITCase.NAME);
+        final Domain domain = region.domain(
+            String.format(
+                "jcabi-test-%s",
+                RandomStringUtils.randomAlphabetic(5)
+            )
+        );
         domain.create();
         return domain;
     }
