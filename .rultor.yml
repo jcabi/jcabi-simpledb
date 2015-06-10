@@ -32,7 +32,8 @@ deploy:
     s3cmd --no-progress put jcabi-simpledb.xml --config=../s3cfg s3://pdd.teamed.io/jcabi-simpledb.xml
     est --dir=./est --verbose --file=jcabi-simpledb.xml --format=xml
     s3cmd --no-progress put jcabi-simpledb.xml --config=../s3cfg s3://est.teamed.io/jcabi-simpledb.xml
-  commanders: []
+  commanders:
+  - yegor256
 env:
   MAVEN_OPTS: -XX:MaxPermSize=256m -Xmx1g
 release:
