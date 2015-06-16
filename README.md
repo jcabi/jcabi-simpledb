@@ -4,7 +4,9 @@
 [![DevOps By Rultor.com](http://www.rultor.com/b/jcabi/jcabi-simpledb)](http://www.rultor.com/p/jcabi/jcabi-simpledb)
 
 [![Build Status](https://travis-ci.org/jcabi/jcabi-simpledb.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-simpledb)
+[![Build status](https://ci.appveyor.com/api/projects/status/sdfe6qqji5hb4a4y/branch/master?svg=true)](https://ci.appveyor.com/project/yegor256/jcabi-simpledb/branch/master)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
+[![JavaDoc](https://img.shields.io/badge/javadoc-html-blue.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
 
 More details are here: [simpledb.jcabi.com](http://simpledb.jcabi.com/index.html)
 
