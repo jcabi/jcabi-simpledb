@@ -5,8 +5,10 @@
 
 [![Build Status](https://travis-ci.org/jcabi/jcabi-simpledb.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-simpledb)
 [![Build status](https://ci.appveyor.com/api/projects/status/sdfe6qqji5hb4a4y/branch/master?svg=true)](https://ci.appveyor.com/project/yegor256/jcabi-simpledb/branch/master)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
 [![JavaDoc](https://img.shields.io/badge/javadoc-html-blue.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
+[![Dependencies](https://www.versioneye.com/user/projects/561ac33fa193340f280010ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561ac33fa193340f280010ef)
 
 More details are here: [simpledb.jcabi.com](http://simpledb.jcabi.com/index.html)
 
