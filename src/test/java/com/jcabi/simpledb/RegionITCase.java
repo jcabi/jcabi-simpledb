@@ -39,7 +39,7 @@ import org.junit.Test;
 
 /**
  * Integration case for {@link Region}.
- * @author Yegor Bugayenko (yegor@teamed.io)
+ * @author Yegor Bugayenko (yegor256@gmail.com)
  * @version $Id$
  * @checkstyle ClassDataAbstractionCoupling (500 lines)
  */

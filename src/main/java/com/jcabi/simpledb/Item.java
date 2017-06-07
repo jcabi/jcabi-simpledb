@@ -41,7 +41,7 @@ import javax.validation.constraints.NotNull;
  * data in Amazon, but doesn't change the object. The object will contain
  * dirty data right after PUT operation, and should not be used any more.
  *
- * @author Yegor Bugayenko (yegor@teamed.io)
+ * @author Yegor Bugayenko (yegor256@gmail.com)
  * @version $Id$
  * @since 0.1
  */

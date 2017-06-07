@@ -44,7 +44,7 @@ import lombok.ToString;
  * <p>You can use {@link #aws()} method to get access to Amazon SimpleDB
  * client directly.
  *
- * @author Yegor Bugayenko (yegor@teamed.io)
+ * @author Yegor Bugayenko (yegor256@gmail.com)
  * @version $Id$
  * @since 0.1
  */
