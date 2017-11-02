@@ -8,6 +8,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/sdfe6qqji5hb4a4y/branch/master?svg=true)](https://ci.appveyor.com/project/yegor256/jcabi-simpledb/branch/master)
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.jcabi/jcabi-simpledb/badge.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
 
+[![jpeek report](http://i.jpeek.org/com.jcabi/jcabi-simpledb/badge.svg)](http://i.jpeek.org/com.jcabi/jcabi-simpledb/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
 [![Dependencies](https://www.versioneye.com/user/projects/561ac33fa193340f280010ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561ac33fa193340f280010ef)
 
