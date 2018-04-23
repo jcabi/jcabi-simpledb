@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/jcabi/jcabi-simpledb.svg?branch=master)](https://travis-ci.org/jcabi/jcabi-simpledb)
 [![PDD status](http://www.0pdd.com/svg?name=jcabi/jcabi-simpledb)](http://www.0pdd.com/p?name=jcabi/jcabi-simpledb)
 [![Build status](https://ci.appveyor.com/api/projects/status/sdfe6qqji5hb4a4y/branch/master?svg=true)](https://ci.appveyor.com/project/yegor256/jcabi-simpledb/branch/master)
-[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.jcabi/jcabi-simpledb/badge.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
+[![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-simpledb.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
 
 [![jpeek report](http://i.jpeek.org/com.jcabi/jcabi-simpledb/badge.svg)](http://i.jpeek.org/com.jcabi/jcabi-simpledb/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
