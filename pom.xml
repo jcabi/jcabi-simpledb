@@ -73,7 +73,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
-      <artifactId>aws-java-sdk</artifactId>
+      <artifactId>aws-java-sdk-core</artifactId>
+      <version>1.12.308</version>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-simpledb</artifactId>
       <version>1.12.308</version>
     </dependency>
     <dependency>
@@ -163,6 +168,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             <configuration>
               <excludes>
                 <exclude>findbugs:.*</exclude>
+                <exclude>duplicatefinder:.*</exclude>
               </excludes>
             </configuration>
           </plugin>
