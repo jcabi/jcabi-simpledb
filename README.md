@@ -4,11 +4,11 @@
 [![Managed by Zerocracy](https://www.0crat.com/badge/C3RUBL5H9.svg)](https://www.0crat.com/p/C3RUBL5H9)
 [![DevOps By Rultor.com](http://www.rultor.com/b/jcabi/jcabi-simpledb)](http://www.rultor.com/p/jcabi/jcabi-simpledb)
 
+[![mvn](https://github.com/jcabi/jcabi-simpledb/actions/workflows/mvn.yml/badge.svg)](https://github.com/jcabi/jcabi-simpledb/actions/workflows/mvn.yml)
 [![PDD status](http://www.0pdd.com/svg?name=jcabi/jcabi-simpledb)](http://www.0pdd.com/p?name=jcabi/jcabi-simpledb)
 [![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-simpledb.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
 [![jpeek report](https://i.jpeek.org/com.jcabi/jcabi-simpledb/badge.svg)](https://i.jpeek.org/com.jcabi/jcabi-simpledb/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
-[![Dependencies](https://www.versioneye.com/user/projects/561ac33fa193340f280010ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561ac33fa193340f280010ef)
 
 More details are here: [simpledb.jcabi.com](https://simpledb.jcabi.com/index.html)
 
