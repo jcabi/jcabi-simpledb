@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -34,29 +34,26 @@ import com.amazonaws.services.simpledb.model.Attribute;
 import com.amazonaws.services.simpledb.model.GetAttributesRequest;
 import com.amazonaws.services.simpledb.model.GetAttributesResult;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
+import org.mockito.hamcrest.MockitoHamcrest;
 
 /**
  * Test case for {@link AwsItem}.
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
- * @checkstyle ClassDataAbstractionCoupling (500 lines)
+ *
+ * @since 0.1
  */
-public final class AwsItemTest {
+final class AwsItemTest {
 
-    /**
-     * AwsItem can load an item.
-     * @throws Exception If some problem inside
-     */
     @Test
-    public void loadsItemFromSimpleDb() throws Exception {
+    void loadsItemFromSimpleDb() {
         final AmazonSimpleDB aws = Mockito.mock(AmazonSimpleDB.class);
         Mockito.doReturn(
             new GetAttributesResult().withAttributes(
                 new Attribute().withName("attr-1").withValue("value-1")
             )
-        ).when(aws).getAttributes(Mockito.any(GetAttributesRequest.class));
+        ).when(aws).getAttributes(ArgumentMatchers.any(GetAttributesRequest.class));
         final Credentials credentials = Mockito.mock(Credentials.class);
         Mockito.doReturn(aws).when(credentials).aws();
         final String name = "item-name";
@@ -65,7 +62,7 @@ public final class AwsItemTest {
         item.get("hello");
         Mockito.verify(aws).getAttributes(
             GetAttributesRequest.class.cast(
-                Mockito.argThat(
+                MockitoHamcrest.argThat(
                     Matchers.allOf(
                         Matchers.hasProperty(
                             "domainName",

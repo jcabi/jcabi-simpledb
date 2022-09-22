@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -39,8 +39,6 @@ import lombok.EqualsAndHashCode;
 /**
  * Iterator of items in SimpleDB.
  *
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 @Loggable(Loggable.DEBUG)
@@ -73,16 +71,13 @@ final class AwsIterator implements Iterator<Item> {
      * @param name Domain name
      * @param req Request
      */
-    protected AwsIterator(final Credentials creds, final String name,
+    AwsIterator(final Credentials creds, final String name,
         final SelectRequest req) {
         this.credentials = creds;
         this.table = name;
         this.request = req;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean hasNext() {
         if (this.result == null) {
@@ -96,9 +91,6 @@ final class AwsIterator implements Iterator<Item> {
         return !this.result.getItems().isEmpty();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Item next() {
         if (!this.hasNext()) {
@@ -111,9 +103,6 @@ final class AwsIterator implements Iterator<Item> {
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void remove() {
         throw new UnsupportedOperationException();

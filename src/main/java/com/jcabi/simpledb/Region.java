@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -44,8 +44,6 @@ import lombok.ToString;
  * <p>You can use {@link #aws()} method to get access to Amazon SimpleDB
  * client directly.
  *
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 @Immutable
@@ -68,6 +66,8 @@ public interface Region {
 
     /**
      * Simple region, basic implementation.
+     *
+     * @since 0.1
      */
     @Immutable
     @Loggable(Loggable.DEBUG)
@@ -78,6 +78,7 @@ public interface Region {
          * Credentials.
          */
         private final transient Credentials credentials;
+
         /**
          * Public ctor.
          * @param creds Credentials
@@ -86,11 +87,13 @@ public interface Region {
             final Credentials creds) {
             this.credentials = creds;
         }
+
         @Override
         @NotNull(message = "AWS client is never NULL")
         public AmazonSimpleDB aws() {
             return this.credentials.aws();
         }
+
         @Override
         @NotNull(message = "domain is never NULL")
         public Domain domain(@NotNull final String name) {

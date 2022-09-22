@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -31,21 +31,17 @@ package com.jcabi.simpledb;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Credentials}.
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
+ *
+ * @since 0.1
  */
-public final class CredentialsTest {
+final class CredentialsTest {
 
-    /**
-     * Credentials can instantiate AWS client.
-     * @throws Exception If some problem inside
-     */
     @Test
-    public void instantiatesAwsClient() throws Exception {
+    void instantiatesAwsClient() {
         final Credentials creds = new Credentials.Simple(
             "ABABABABABABABABABEF",
             "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCEF"
@@ -53,12 +49,8 @@ public final class CredentialsTest {
         MatcherAssert.assertThat(creds.aws(), Matchers.notNullValue());
     }
 
-    /**
-     * Credentials can instantiate AWS client with custom region.
-     * @throws Exception If some problem inside
-     */
     @Test
-    public void instantiatesAwsClientWithCustomRegion() throws Exception {
+    void instantiatesAwsClientWithCustomRegion() {
         final Credentials creds = new Credentials.Simple(
             "ABABABABABABABABABAB",
             "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE",

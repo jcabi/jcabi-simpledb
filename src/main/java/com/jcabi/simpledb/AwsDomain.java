@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -34,14 +34,11 @@ import com.amazonaws.services.simpledb.model.DeleteDomainRequest;
 import com.amazonaws.services.simpledb.model.SelectRequest;
 import com.jcabi.aspects.Immutable;
 import com.jcabi.aspects.Loggable;
-import java.util.Iterator;
 import lombok.EqualsAndHashCode;
 
 /**
  * Single table in SimpleDB, through AWS SDK.
  *
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 @Immutable
@@ -64,30 +61,21 @@ final class AwsDomain implements Domain {
      * @param creds Credentials
      * @param name Domain name
      */
-    protected AwsDomain(final Credentials creds, final String name) {
+    AwsDomain(final Credentials creds, final String name) {
         this.credentials = creds;
         this.table = name;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         return this.table;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String name() {
         return this.table;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void create() {
         this.credentials.aws().createDomain(
@@ -95,9 +83,6 @@ final class AwsDomain implements Domain {
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void drop() {
         this.credentials.aws().deleteDomain(
@@ -105,29 +90,18 @@ final class AwsDomain implements Domain {
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Item item(final String name) {
         return new AwsItem(this.credentials, this.table, name);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Iterable<Item> select(final SelectRequest request) {
-        return new Iterable<Item>() {
-            @Override
-            public Iterator<Item> iterator() {
-                return new AwsIterator(
-                    AwsDomain.this.credentials,
-                    AwsDomain.this.table,
-                    request
-                );
-            }
-        };
+        return () -> new AwsIterator(
+            this.credentials,
+            this.table,
+            request
+        );
     }
 
 }

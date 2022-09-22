@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -29,11 +29,12 @@
  */
 package com.jcabi.simpledb;
 
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.RegionUtils;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpledb.AmazonSimpleDB;
-import com.amazonaws.services.simpledb.AmazonSimpleDBClient;
+import com.amazonaws.services.simpledb.AmazonSimpleDBClientBuilder;
 import com.jcabi.aspects.Immutable;
 import com.jcabi.aspects.Loggable;
 import javax.validation.constraints.NotNull;
@@ -45,8 +46,6 @@ import org.apache.commons.lang3.Validate;
  *
  * <p>It is recommended to use {@link Credentials.Simple} in most cases.
  *
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 @Immutable
@@ -63,9 +62,6 @@ public interface Credentials {
     /**
      * Build AWS client.
      *
-     * <p>Don't forget to shut it down after use,
-     * using {@link AmazonSimpleDB#shutdown()}.
-     *
      * @return Amazon Dynamo DB client
      */
     @NotNull
@@ -73,6 +69,8 @@ public interface Credentials {
 
     /**
      * Simple implementation.
+     *
+     * @since 0.1
      */
     @Immutable
     @Loggable(Loggable.DEBUG)
@@ -82,14 +80,17 @@ public interface Credentials {
          * AWS key.
          */
         private final transient String key;
+
         /**
          * AWS secret.
          */
         private final transient String secret;
+
         /**
          * Region name.
          */
         private final transient String region;
+
         /**
          * Public ctor, with "us-east-1" region.
          * @param akey AWS key
@@ -98,12 +99,14 @@ public interface Credentials {
         public Simple(@NotNull final String akey, @NotNull final String scrt) {
             this(akey, scrt, Regions.US_EAST_1.getName());
         }
+
         /**
          * Public ctor.
          * @param akey AWS key
          * @param scrt Secret
          * @param reg Region
          */
+        @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         public Simple(
             @NotNull(message = "AWS key can't be NULL") final String akey,
             @NotNull(message = "AWS secret can't be NULL") final String scrt,
@@ -124,33 +127,29 @@ public interface Credentials {
             );
             this.region = reg;
         }
-        /**
-         * {@inheritDoc}
-         */
+
         @Override
         public String toString() {
             return String.format("%s/%s", this.region, this.key);
         }
-        /**
-         * {@inheritDoc}
-         */
+
         @Override
         @NotNull
         public AmazonSimpleDB aws() {
-            final AmazonSimpleDB aws = new AmazonSimpleDBClient(
-                new BasicAWSCredentials(this.key, this.secret)
-            );
-            final com.amazonaws.regions.Region reg =
-                RegionUtils.getRegion(this.region);
-            Validate.notNull(reg, "Failed to find region '%s'", this.region);
-            aws.setRegion(reg);
-            return aws;
+            return AmazonSimpleDBClientBuilder.standard()
+                .withRegion(this.region)
+                .withCredentials(
+                    new AWSStaticCredentialsProvider(
+                        new BasicAWSCredentials(this.key, this.secret)
+                    )
+                ).build();
         }
     }
 
     /**
      * Assumed AWS IAM role.
      *
+     * @since 0.1
      * @see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/role-usecase-ec2app.html">Granting Applications that Run on Amazon EC2 Instances Access to AWS Resources</a>
      */
     @Immutable
@@ -161,16 +160,19 @@ public interface Credentials {
          * Region name.
          */
         private final transient String region;
+
         /**
          * Public ctor.
          */
         public Assumed() {
             this(Regions.US_EAST_1.getName());
         }
+
         /**
          * Public ctor.
          * @param reg Region
          */
+        @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
         public Assumed(@NotNull(message = "SimpleDB region can't be NULL")
             final String reg) {
             Validate.matchesPattern(
@@ -179,30 +181,25 @@ public interface Credentials {
             );
             this.region = reg;
         }
-        /**
-         * {@inheritDoc}
-         */
+
         @Override
         public String toString() {
             return this.region;
         }
-        /**
-         * {@inheritDoc}
-         */
+
         @Override
         @NotNull
         public AmazonSimpleDB aws() {
-            final AmazonSimpleDB aws = new AmazonSimpleDBClient();
-            final com.amazonaws.regions.Region reg =
-                RegionUtils.getRegion(this.region);
-            Validate.notNull(reg, "Failed to detect region '%s'", this.region);
-            aws.setRegion(reg);
-            return aws;
+            return AmazonSimpleDBClientBuilder.standard()
+                .withRegion(this.region)
+                .build();
         }
     }
 
     /**
      * With explicitly specified endpoint.
+     *
+     * @since 0.1
      */
     @Immutable
     @Loggable(Loggable.DEBUG)
@@ -211,46 +208,56 @@ public interface Credentials {
         /**
          * Original credentials.
          */
-        private final transient Credentials origin;
+        private final transient Credentials.Simple origin;
+
         /**
          * Endpoint.
          */
         private final transient String endpoint;
+
         /**
          * Public ctor.
          * @param creds Original credentials
          * @param pnt Endpoint
          */
         public Direct(
-            @NotNull(message = "credentials is NULL") final Credentials creds,
+            @NotNull(message = "credentials is NULL") final Credentials.Simple creds,
             @NotNull(message = "end point can't be NULL") final String pnt) {
             this.origin = creds;
             this.endpoint = pnt;
         }
+
         /**
          * Public ctor.
          * @param creds Original credentials
          * @param port Port number for localhost
          */
-        public Direct(@NotNull final Credentials creds, final int port) {
+        public Direct(@NotNull final Credentials.Simple creds, final int port) {
             this(creds, String.format("http://localhost:%d", port));
         }
-        /**
-         * {@inheritDoc}
-         */
+
         @Override
         public String toString() {
             return String.format("%s at %s", this.origin, this.endpoint);
         }
-        /**
-         * {@inheritDoc}
-         */
+
         @Override
         @NotNull
         public AmazonSimpleDB aws() {
-            final AmazonSimpleDB aws = this.origin.aws();
-            aws.setEndpoint(this.endpoint);
-            return aws;
+            return AmazonSimpleDBClientBuilder.standard()
+                .withEndpointConfiguration(
+                    new AwsClientBuilder.EndpointConfiguration(
+                        this.endpoint, Regions.US_EAST_1.getName()
+                    )
+                )
+                .withCredentials(
+                    new AWSStaticCredentialsProvider(
+                        new BasicAWSCredentials(
+                            this.origin.key, this.origin.secret
+                        )
+                    )
+                )
+                .build();
         }
     }
 

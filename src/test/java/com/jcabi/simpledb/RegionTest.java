@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -29,21 +29,17 @@
  */
 package com.jcabi.simpledb;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Region}.
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
+ *
+ * @since 0.1
  */
-public final class RegionTest {
+final class RegionTest {
 
-    /**
-     * Region.Simple can work.
-     * @throws Exception If some problem inside
-     */
     @Test
-    public void works() throws Exception {
+    void works() {
         // todo
     }
 

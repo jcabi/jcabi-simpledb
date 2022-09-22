@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -50,8 +50,6 @@ import lombok.EqualsAndHashCode;
 /**
  * Single item/row in a SimpleDB table.
  *
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
  * @since 0.1
  * @checkstyle ClassDataAbstractionCoupling (500 lines)
  */
@@ -82,7 +80,7 @@ final class AwsItem implements Item {
      * @param tbl Table name
      * @param item Item name
      */
-    protected AwsItem(final Credentials creds, final String tbl,
+    AwsItem(final Credentials creds, final String tbl,
         final String item) {
         this.credentials = creds;
         this.table = tbl;
@@ -95,67 +93,46 @@ final class AwsItem implements Item {
      * @param tbl Table name
      * @param item Item name
      */
-    protected AwsItem(final Credentials creds, final String tbl,
+    AwsItem(final Credentials creds, final String tbl,
         final com.amazonaws.services.simpledb.model.Item item) {
         this(creds, tbl, item.getName());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         return String.format("%s in %s", this.label, this.table);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String name() {
         return this.label;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int size() {
         return this.entrySet().size();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isEmpty() {
         return this.entrySet().isEmpty();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean containsKey(final Object key) {
-        return this.keySet().contains(key);
+        return this.containsKey(key);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean containsValue(final Object value) {
-        return this.values().contains(value);
+        return this.containsValue(value);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String get(final Object key) {
-        final Set<Entry<String, String>> entries = this.entrySet();
+        final Set<Map.Entry<String, String>> entries = this.entrySet();
         String value = null;
-        for (final Entry<String, String> entry : entries) {
+        for (final Map.Entry<String, String> entry : entries) {
             if (entry.getKey().equals(key)) {
                 value = entry.getValue();
             }
@@ -163,22 +140,16 @@ final class AwsItem implements Item {
         return value;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String put(final String key, final String value) {
         final String before = this.get(key);
         final ConcurrentMap<String, String> map =
-            new ConcurrentHashMap<String, String>(0);
+            new ConcurrentHashMap<>(0);
         map.put(key, value);
         this.putAll(map);
         return before;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String remove(final Object key) {
         final String before = this.get(key);
@@ -191,14 +162,11 @@ final class AwsItem implements Item {
         return before;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     public void putAll(final Map<? extends String, ? extends String> map) {
         final Collection<ReplaceableAttribute> attrs =
-            new ArrayList<ReplaceableAttribute>(map.size());
+            new ArrayList<>(map.size());
         for (final Map.Entry<?, ?> entry : map.entrySet()) {
             attrs.add(
                 new ReplaceableAttribute()
@@ -215,9 +183,6 @@ final class AwsItem implements Item {
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void clear() {
         this.credentials.aws().deleteAttributes(
@@ -227,49 +192,40 @@ final class AwsItem implements Item {
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Set<String> keySet() {
-        final Set<Entry<String, String>> entries = this.entrySet();
-        final Set<String> keys = new HashSet<String>(entries.size());
-        for (final Entry<String, String> entry : entries) {
+        final Set<Map.Entry<String, String>> entries = this.entrySet();
+        final Set<String> keys = new HashSet<>(entries.size());
+        for (final Map.Entry<String, String> entry : entries) {
             keys.add(entry.getValue());
         }
         return keys;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<String> values() {
-        final Set<Entry<String, String>> entries = this.entrySet();
-        final Collection<String> values = new ArrayList<String>(entries.size());
-        for (final Entry<String, String> entry : entries) {
+        final Set<Map.Entry<String, String>> entries = this.entrySet();
+        final Collection<String> values = new ArrayList<>(entries.size());
+        for (final Map.Entry<String, String> entry : entries) {
             values.add(entry.getValue());
         }
         return values;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
-    public Set<Entry<String, String>> entrySet() {
+    public Set<Map.Entry<String, String>> entrySet() {
         final GetAttributesResult result = this.credentials.aws().getAttributes(
             new GetAttributesRequest()
                 .withConsistentRead(true)
                 .withDomainName(this.table)
                 .withItemName(this.label)
         );
-        final Set<Entry<String, String>> entries =
-            new HashSet<Entry<String, String>>(0);
+        final Set<Map.Entry<String, String>> entries =
+            new HashSet<>(0);
         for (final Attribute attr : result.getAttributes()) {
             entries.add(
-                new AbstractMap.SimpleImmutableEntry<String, String>(
+                new AbstractMap.SimpleImmutableEntry<>(
                     attr.getName(), attr.getValue()
                 )
             );

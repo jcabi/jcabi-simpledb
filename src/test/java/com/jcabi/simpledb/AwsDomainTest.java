@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -31,23 +31,18 @@ package com.jcabi.simpledb;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 /**
  * Test case for {@link AwsDomain}.
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
- * @checkstyle ClassDataAbstractionCoupling (500 lines)
+ *
+ * @since 0.1
  */
-public final class AwsDomainTest {
+final class AwsDomainTest {
 
-    /**
-     * AwsDomain can return an item.
-     * @throws Exception If some problem inside
-     */
     @Test
-    public void makesAnItem() throws Exception {
+    void makesAnItem() {
         final Credentials credentials = Mockito.mock(Credentials.class);
         final Domain table = new AwsDomain(credentials, "test");
         final Item item = table.item("x");

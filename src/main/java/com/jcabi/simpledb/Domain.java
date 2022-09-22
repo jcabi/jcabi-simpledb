@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -46,8 +46,6 @@ import javax.validation.constraints.NotNull;
  *   System.out.println(attr.getKey() + ": " + attr.getValue());
  * }</pre>
  *
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 @Immutable

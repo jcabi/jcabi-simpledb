@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -34,16 +34,15 @@ import com.jcabi.aspects.Tv;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Assume;
-import org.junit.Test;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Integration case for {@link Region}.
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
- * @checkstyle ClassDataAbstractionCoupling (500 lines)
+ *
+ * @since 0.1
  */
-public final class RegionITCase {
+final class RegionITCase {
 
     /**
      * SimpleDB key.
@@ -57,12 +56,8 @@ public final class RegionITCase {
     private static final String SECRET =
         System.getProperty("failsafe.sdb.secret");
 
-    /**
-     * Region.Simple can put and remove individual items.
-     * @throws Exception If some problem inside
-     */
     @Test
-    public void putsAndRemovesIndividualItems() throws Exception {
+    void putsAndRemovesIndividualItems() {
         final Domain domain = this.domain();
         try {
             final String name = RandomStringUtils.randomAlphanumeric(Tv.TEN);
@@ -83,12 +78,8 @@ public final class RegionITCase {
         }
     }
 
-    /**
-     * Region.Simple can select items.
-     * @throws Exception If some problem inside
-     */
     @Test
-    public void selectsMultipleItems() throws Exception {
+    void selectsMultipleItems() {
         final Domain domain = this.domain();
         try {
             final String attr = "alpha";
@@ -103,7 +94,7 @@ public final class RegionITCase {
                         )
                     ).withConsistentRead(true)
                 ),
-                Matchers.<Item>hasItem(Matchers.hasKey(attr))
+                Matchers.hasItem(Matchers.hasKey(attr))
             );
         } finally {
             domain.drop();
@@ -112,10 +103,9 @@ public final class RegionITCase {
 
     /**
      * Region.Simple can select many items.
-     * @throws Exception If some problem inside
      */
     @Test
-    public void selectsManyItems() throws Exception {
+    void selectsManyItems() {
         final Domain domain = this.domain();
         try {
             for (int idx = 0; idx < Tv.TEN; ++idx) {
@@ -127,7 +117,7 @@ public final class RegionITCase {
                         String.format("SELECT * FROM `%s`", domain.name())
                     ).withConsistentRead(true)
                 ),
-                Matchers.<Item>iterableWithSize(Tv.TEN)
+                Matchers.iterableWithSize(Tv.TEN)
             );
         } finally {
             domain.drop();
@@ -137,10 +127,9 @@ public final class RegionITCase {
     /**
      * Make domain.
      * @return Domain
-     * @throws Exception If fails
      */
-    private Domain domain() throws Exception {
-        Assume.assumeNotNull(RegionITCase.KEY);
+    private Domain domain() {
+        Assumptions.assumeFalse(RegionITCase.KEY.isEmpty());
         final Region region = new Region.Simple(
             new Credentials.Simple(RegionITCase.KEY, RegionITCase.SECRET)
         );

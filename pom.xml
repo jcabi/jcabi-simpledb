@@ -33,7 +33,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
   <parent>
     <groupId>com.jcabi</groupId>
     <artifactId>jcabi</artifactId>
-    <version>1.34.1</version>
+    <version>1.35.0</version>
   </parent>
   <artifactId>jcabi-simpledb</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -46,7 +46,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
   </issueManagement>
   <ciManagement>
     <system>rultor</system>
-    <url>http://www.rultor.com/s/jcabi</url>
+    <url>https://www.rultor.com/s/jcabi</url>
   </ciManagement>
   <scm>
     <connection>scm:git:github.com:jcabi/jcabi-simpledb.git</connection>
@@ -56,7 +56,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
   <distributionManagement>
     <site>
       <id>github-pages</id>
-      <url>http://simpledb.jcabi.com</url>
+      <url>https://simpledb.jcabi.com</url>
     </site>
   </distributionManagement>
   <dependencies>
@@ -69,6 +69,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.24</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
@@ -81,6 +82,24 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
       <version>2.0.1.Final</version>
     </dependency>
     <dependency>
+      <groupId>javax.el</groupId>
+      <artifactId>javax.el-api</artifactId>
+      <version>3.0.1-b06</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.el</artifactId>
+      <version>3.0.1-b12</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.0.20.Final</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
       <version>1.9.9.1</version>
@@ -90,6 +109,18 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.12.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>2.0.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
@@ -128,6 +159,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
           <plugin>
             <groupId>com.qulice</groupId>
             <artifactId>qulice-maven-plugin</artifactId>
+            <version>0.22.0</version>
             <configuration>
               <excludes>
                 <exclude>findbugs:.*</exclude>

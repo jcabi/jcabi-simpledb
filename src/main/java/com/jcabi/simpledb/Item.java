@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012-2022, jcabi.com
  * All rights reserved.
  *
@@ -37,12 +37,10 @@ import javax.validation.constraints.NotNull;
  * Immutable Amazon SimpleDB item.
  *
  * <p>The class is immutable, which means that every call to
- * {@link #put(String,AttributeValue)} or {@link #put(Attributes)} changes
+ * {@link #put(String,String)} changes
  * data in Amazon, but doesn't change the object. The object will contain
- * dirty data right after PUT operation, and should not be used any more.
+ * dirty data right after PUT operation, and should not be used anymore.
  *
- * @author Yegor Bugayenko (yegor256@gmail.com)
- * @version $Id$
  * @since 0.1
  */
 @Immutable
