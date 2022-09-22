@@ -9,6 +9,7 @@
 [![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-simpledb.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
 [![jpeek report](https://i.jpeek.org/com.jcabi/jcabi-simpledb/badge.svg)](https://i.jpeek.org/com.jcabi/jcabi-simpledb/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
+[![codecov](https://codecov.io/gh/jcabi/jcabi-simpledb/branch/master/graph/badge.svg)](https://codecov.io/gh/jcabi/jcabi-simpledb)
 
 More details are here: [simpledb.jcabi.com](https://simpledb.jcabi.com/index.html)
 
