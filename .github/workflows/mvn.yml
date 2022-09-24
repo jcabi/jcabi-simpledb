@@ -1,6 +1,6 @@
 ---
 name: mvn
-"on":
+on:
   push:
     branches:
       - master
@@ -8,7 +8,7 @@ name: mvn
     branches:
       - master
 jobs:
-  maven-build:
+  mvn:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
