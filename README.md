@@ -1,11 +1,11 @@
 <img src="https://www.jcabi.com/logo-square.svg" width="64px" height="64px" />
 
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
-[![DevOps By Rultor.com](http://www.rultor.com/b/jcabi/jcabi-simpledb)](http://www.rultor.com/p/jcabi/jcabi-simpledb)
+[![DevOps By Rultor.com](https://www.rultor.com/b/jcabi/jcabi-simpledb)](https://www.rultor.com/p/jcabi/jcabi-simpledb)
 
 [![mvn](https://github.com/jcabi/jcabi-simpledb/actions/workflows/mvn.yml/badge.svg)](https://github.com/jcabi/jcabi-simpledb/actions/workflows/mvn.yml)
-[![PDD status](http://www.0pdd.com/svg?name=jcabi/jcabi-simpledb)](http://www.0pdd.com/p?name=jcabi/jcabi-simpledb)
-[![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-simpledb.svg)](http://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
+[![PDD status](https://www.0pdd.com/svg?name=jcabi/jcabi-simpledb)](https://www.0pdd.com/p?name=jcabi/jcabi-simpledb)
+[![Javadoc](https://javadoc.io/badge/com.jcabi/jcabi-simpledb.svg)](https://www.javadoc.io/doc/com.jcabi/jcabi-simpledb)
 [![jpeek report](https://i.jpeek.org/com.jcabi/jcabi-simpledb/badge.svg)](https://i.jpeek.org/com.jcabi/jcabi-simpledb/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jcabi/jcabi-simpledb)
 [![codecov](https://codecov.io/gh/jcabi/jcabi-simpledb/branch/master/graph/badge.svg)](https://codecov.io/gh/jcabi/jcabi-simpledb)
