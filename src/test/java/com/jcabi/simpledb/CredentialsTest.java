@@ -21,7 +21,7 @@ final class CredentialsTest {
             "ABABABABABABABABABEF",
             "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCEF"
         );
-        MatcherAssert.assertThat(creds.aws(), Matchers.notNullValue());
+        MatcherAssert.assertThat("should be not null", creds.aws(), Matchers.notNullValue());
     }
 
     @Test
@@ -31,7 +31,7 @@ final class CredentialsTest {
             "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE",
             "eu-west-1"
         );
-        MatcherAssert.assertThat(creds.aws(), Matchers.notNullValue());
+        MatcherAssert.assertThat("should be not null", creds.aws(), Matchers.notNullValue());
     }
 
 }

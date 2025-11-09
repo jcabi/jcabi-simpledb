@@ -21,7 +21,7 @@ final class AwsDomainTest {
         final Credentials credentials = Mockito.mock(Credentials.class);
         final Domain table = new AwsDomain(credentials, "test");
         final Item item = table.item("x");
-        MatcherAssert.assertThat(item, Matchers.notNullValue());
+        MatcherAssert.assertThat("should be not null", item, Matchers.notNullValue());
     }
 
 }

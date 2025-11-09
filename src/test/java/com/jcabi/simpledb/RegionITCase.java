@@ -40,11 +40,11 @@ final class RegionITCase {
             for (int idx = 0; idx < 2; ++idx) {
                 domain.item(name).put(attr, value);
                 MatcherAssert.assertThat(
-                    domain.item(name), Matchers.hasKey(attr)
+                    "should has an item", domain.item(name), Matchers.hasKey(attr)
                 );
                 domain.item(name).remove(attr);
                 MatcherAssert.assertThat(
-                    domain.item(name), Matchers.not(Matchers.hasKey(attr))
+                    "should not has an item", domain.item(name), Matchers.not(Matchers.hasKey(attr))
                 );
             }
         } finally {
@@ -60,6 +60,7 @@ final class RegionITCase {
             domain.item("first").put(attr, "val-99");
             domain.item("second").put("beta", "");
             MatcherAssert.assertThat(
+                "should has an item",
                 domain.select(
                     new SelectRequest().withSelectExpression(
                         String.format(
@@ -86,6 +87,7 @@ final class RegionITCase {
                 domain.item(String.format("i-%d", idx)).put("hey", "");
             }
             MatcherAssert.assertThat(
+                "should has an item",
                 domain.select(
                     new SelectRequest().withSelectExpression(
                         String.format("SELECT * FROM `%s`", domain.name())
