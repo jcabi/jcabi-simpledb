@@ -31,6 +31,7 @@ final class RegionITCase {
         System.getProperty("failsafe.sdb.secret");
 
     @Test
+    @SuppressWarnings({"PMD.UnitTestContainsTooManyAsserts", "PMD.UnnecessaryLocalRule"})
     void putsAndRemovesIndividualItems() {
         final Domain domain = this.domain();
         try {

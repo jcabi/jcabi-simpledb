@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 final class CredentialsTest {
 
     @Test
+    @SuppressWarnings("PMD.UnnecessaryLocalRule")
     void instantiatesAwsClient() {
         final Credentials creds = new Credentials.Simple(
             "ABABABABABABABABABEF",
@@ -25,6 +26,7 @@ final class CredentialsTest {
     }
 
     @Test
+    @SuppressWarnings("PMD.UnnecessaryLocalRule")
     void instantiatesAwsClientWithCustomRegion() {
         final Credentials creds = new Credentials.Simple(
             "ABABABABABABABABABAB",

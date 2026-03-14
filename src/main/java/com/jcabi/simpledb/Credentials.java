@@ -24,6 +24,7 @@ import org.apache.commons.lang3.Validate;
  * @since 0.1
  */
 @Immutable
+@FunctionalInterface
 public interface Credentials {
 
     /**

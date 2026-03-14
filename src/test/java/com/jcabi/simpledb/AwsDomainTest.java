@@ -17,6 +17,7 @@ import org.mockito.Mockito;
 final class AwsDomainTest {
 
     @Test
+    @SuppressWarnings("PMD.UnnecessaryLocalRule")
     void makesAnItem() {
         final Credentials credentials = Mockito.mock(Credentials.class);
         final Domain table = new AwsDomain(credentials, "test");

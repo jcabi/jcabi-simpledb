@@ -116,6 +116,7 @@ final class AwsItem implements Item {
     }
 
     @Override
+    @SuppressWarnings("PMD.UnnecessaryLocalRule")
     public String put(final String key, final String value) {
         final String before = this.get(key);
         final ConcurrentMap<String, String> map =
@@ -126,6 +127,7 @@ final class AwsItem implements Item {
     }
 
     @Override
+    @SuppressWarnings("PMD.UnnecessaryLocalRule")
     public String remove(final Object key) {
         final String before = this.get(key);
         this.credentials.aws().deleteAttributes(
@@ -138,7 +140,6 @@ final class AwsItem implements Item {
     }
 
     @Override
-    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     public void putAll(final Map<? extends String, ? extends String> map) {
         final Collection<ReplaceableAttribute> attrs =
             new ArrayList<>(map.size());
@@ -188,7 +189,6 @@ final class AwsItem implements Item {
     }
 
     @Override
-    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     public Set<Map.Entry<String, String>> entrySet() {
         final GetAttributesResult result = this.credentials.aws().getAttributes(
             new GetAttributesRequest()
