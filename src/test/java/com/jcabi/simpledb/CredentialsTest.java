@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Credentials}.
- *
  * @since 0.1
  */
 final class CredentialsTest {
@@ -35,5 +34,4 @@ final class CredentialsTest {
         );
         MatcherAssert.assertThat("should be not null", creds.aws(), Matchers.notNullValue());
     }
-
 }

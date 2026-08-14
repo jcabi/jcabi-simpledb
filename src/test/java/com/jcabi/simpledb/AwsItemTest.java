@@ -8,6 +8,7 @@ import com.amazonaws.services.simpledb.AmazonSimpleDB;
 import com.amazonaws.services.simpledb.model.Attribute;
 import com.amazonaws.services.simpledb.model.GetAttributesRequest;
 import com.amazonaws.services.simpledb.model.GetAttributesResult;
+import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -16,10 +17,45 @@ import org.mockito.hamcrest.MockitoHamcrest;
 
 /**
  * Test case for {@link AwsItem}.
- *
  * @since 0.1
  */
 final class AwsItemTest {
+
+    @Test
+    void findsAttributeByName() {
+        final AmazonSimpleDB aws = Mockito.mock(AmazonSimpleDB.class);
+        Mockito.doReturn(
+            new GetAttributesResult().withAttributes(
+                new Attribute().withName("attr-2").withValue("value-2")
+            )
+        ).when(aws).getAttributes(ArgumentMatchers.any(GetAttributesRequest.class));
+        final Credentials credentials = Mockito.mock(Credentials.class);
+        Mockito.doReturn(aws).when(credentials).aws();
+        MatcherAssert.assertThat(
+            "attribute cannot be found by its name",
+            new AwsItem(credentials, "table-2", "item-2")
+                .containsKey("attr-2"),
+            Matchers.is(true)
+        );
+    }
+
+    @Test
+    void findsAttributeByValue() {
+        final AmazonSimpleDB aws = Mockito.mock(AmazonSimpleDB.class);
+        Mockito.doReturn(
+            new GetAttributesResult().withAttributes(
+                new Attribute().withName("attr-3").withValue("value-3")
+            )
+        ).when(aws).getAttributes(ArgumentMatchers.any(GetAttributesRequest.class));
+        final Credentials credentials = Mockito.mock(Credentials.class);
+        Mockito.doReturn(aws).when(credentials).aws();
+        MatcherAssert.assertThat(
+            "attribute cannot be found by its value",
+            new AwsItem(credentials, "table-3", "item-3")
+                .containsValue("value-3"),
+            Matchers.is(true)
+        );
+    }
 
     @Test
     void loadsItemFromSimpleDb() {
@@ -52,5 +88,4 @@ final class AwsItemTest {
             )
         );
     }
-
 }

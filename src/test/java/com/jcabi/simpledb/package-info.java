@@ -5,7 +5,6 @@
 
 /**
  * Amazon SimpleDB Object Layer, tests.
- *
  * @since 0.1
  */
 package com.jcabi.simpledb;

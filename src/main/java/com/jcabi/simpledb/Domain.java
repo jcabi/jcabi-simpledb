@@ -58,5 +58,4 @@ public interface Domain {
      */
     @NotNull(message = "collection of items is never NULL")
     Iterable<Item> select(@NotNull SelectRequest request);
-
 }

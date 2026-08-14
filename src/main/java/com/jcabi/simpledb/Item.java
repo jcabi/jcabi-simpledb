@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
  * Immutable Amazon SimpleDB item.
  *
  * <p>The class is immutable, which means that every call to
- * {@link #put(String,String)} changes
+ * {@link Map#put(Object, Object)} changes
  * data in Amazon, but doesn't change the object. The object will contain
  * dirty data right after PUT operation, and should not be used anymore.
  *
@@ -27,5 +27,4 @@ public interface Item extends Map<String, String> {
      */
     @NotNull(message = "name is never NULL")
     String name();
-
 }

@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Integration case for {@link Region}.
- *
  * @since 0.1
  */
 final class RegionITCase {
@@ -31,7 +30,7 @@ final class RegionITCase {
         System.getProperty("failsafe.sdb.secret");
 
     @Test
-    @SuppressWarnings({"PMD.UnitTestContainsTooManyAsserts", "PMD.UnnecessaryLocalRule"})
+    @SuppressWarnings("PMD.UnitTestContainsTooManyAsserts")
     void putsAndRemovesIndividualItems() {
         final Domain domain = this.domain();
         try {
@@ -119,5 +118,4 @@ final class RegionITCase {
         domain.create();
         return domain;
     }
-
 }

@@ -13,7 +13,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Iterator of items in SimpleDB.
- *
  * @since 0.1
  */
 @Loggable(Loggable.DEBUG)
@@ -82,5 +81,4 @@ final class AwsIterator implements Iterator<Item> {
     public void remove() {
         throw new UnsupportedOperationException();
     }
-
 }

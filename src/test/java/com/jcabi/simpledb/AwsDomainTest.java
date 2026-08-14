@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 
 /**
  * Test case for {@link AwsDomain}.
- *
  * @since 0.1
  */
 final class AwsDomainTest {
@@ -24,5 +23,4 @@ final class AwsDomainTest {
         final Item item = table.item("x");
         MatcherAssert.assertThat("should be not null", item, Matchers.notNullValue());
     }
-
 }

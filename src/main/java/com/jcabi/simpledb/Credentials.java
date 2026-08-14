@@ -37,7 +37,6 @@ public interface Credentials {
 
     /**
      * Build AWS client.
-     *
      * @return Amazon Dynamo DB client
      */
     @NotNull
@@ -45,13 +44,13 @@ public interface Credentials {
 
     /**
      * Simple implementation.
-     *
      * @since 0.1
      */
     @Immutable
     @Loggable(Loggable.DEBUG)
     @EqualsAndHashCode(of = { "key", "secret", "region" })
     final class Simple implements Credentials {
+
         /**
          * AWS key.
          */
@@ -83,6 +82,7 @@ public interface Credentials {
          * @param reg Region
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
+        // @checkstyle ConstructorsCodeFreeCheck (20 lines)
         public Simple(
             @NotNull(message = "AWS key can't be NULL") final String akey,
             @NotNull(message = "AWS secret can't be NULL") final String scrt,
@@ -113,8 +113,7 @@ public interface Credentials {
         @NotNull
         public AmazonSimpleDB aws() {
             return AmazonSimpleDBClientBuilder.standard()
-                .withRegion(this.region)
-                .withCredentials(
+                .withRegion(this.region).withCredentials(
                     new AWSStaticCredentialsProvider(
                         new BasicAWSCredentials(this.key, this.secret)
                     )
@@ -124,7 +123,6 @@ public interface Credentials {
 
     /**
      * Assumed AWS IAM role.
-     *
      * @see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/role-usecase-ec2app.html">Granting Applications that Run on Amazon EC2 Instances Access to AWS Resources</a>
      * @since 0.1
      */
@@ -132,6 +130,7 @@ public interface Credentials {
     @Loggable(Loggable.DEBUG)
     @EqualsAndHashCode(of = "region")
     final class Assumed implements Credentials {
+
         /**
          * Region name.
          */
@@ -149,6 +148,7 @@ public interface Credentials {
          * @param reg Region
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
+        // @checkstyle ConstructorsCodeFreeCheck (8 lines)
         public Assumed(@NotNull(message = "SimpleDB region can't be NULL")
             final String reg) {
             Validate.matchesPattern(
@@ -174,13 +174,13 @@ public interface Credentials {
 
     /**
      * With explicitly specified endpoint.
-     *
      * @since 0.1
      */
     @Immutable
     @Loggable(Loggable.DEBUG)
     @EqualsAndHashCode(of = { "origin", "endpoint" })
     final class Direct implements Credentials {
+
         /**
          * Original credentials.
          */
@@ -194,6 +194,15 @@ public interface Credentials {
         /**
          * Public ctor.
          * @param creds Original credentials
+         * @param port Port number for localhost
+         */
+        public Direct(@NotNull final Credentials.Simple creds, final int port) {
+            this(creds, String.format("http://localhost:%d", port));
+        }
+
+        /**
+         * Public ctor.
+         * @param creds Original credentials
          * @param pnt Endpoint
          */
         public Direct(
@@ -201,15 +210,6 @@ public interface Credentials {
             @NotNull(message = "end point can't be NULL") final String pnt) {
             this.origin = creds;
             this.endpoint = pnt;
-        }
-
-        /**
-         * Public ctor.
-         * @param creds Original credentials
-         * @param port Port number for localhost
-         */
-        public Direct(@NotNull final Credentials.Simple creds, final int port) {
-            this(creds, String.format("http://localhost:%d", port));
         }
 
         @Override
@@ -221,12 +221,7 @@ public interface Credentials {
         @NotNull
         public AmazonSimpleDB aws() {
             return AmazonSimpleDBClientBuilder.standard()
-                .withEndpointConfiguration(
-                    new AwsClientBuilder.EndpointConfiguration(
-                        this.endpoint, Regions.US_EAST_1.getName()
-                    )
-                )
-                .withCredentials(
+                .withEndpointConfiguration(this.config()).withCredentials(
                     new AWSStaticCredentialsProvider(
                         new BasicAWSCredentials(
                             this.origin.key, this.origin.secret
@@ -235,6 +230,15 @@ public interface Credentials {
                 )
                 .build();
         }
-    }
 
+        /**
+         * Configuration of the endpoint.
+         * @return Configuration
+         */
+        private AwsClientBuilder.EndpointConfiguration config() {
+            return new AwsClientBuilder.EndpointConfiguration(
+                this.endpoint, Regions.US_EAST_1.getName()
+            );
+        }
+    }
 }

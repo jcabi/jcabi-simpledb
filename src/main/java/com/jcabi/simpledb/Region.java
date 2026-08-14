@@ -41,7 +41,6 @@ public interface Region {
 
     /**
      * Simple region, basic implementation.
-     *
      * @since 0.1
      */
     @Immutable
@@ -49,6 +48,7 @@ public interface Region {
     @ToString
     @EqualsAndHashCode(of = "credentials")
     final class Simple implements Region {
+
         /**
          * Credentials.
          */
@@ -75,5 +75,4 @@ public interface Region {
             return new AwsDomain(this.credentials, name);
         }
     }
-
 }

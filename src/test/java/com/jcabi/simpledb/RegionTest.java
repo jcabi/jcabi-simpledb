@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Region}.
- *
  * @since 0.1
  */
 final class RegionTest {
@@ -21,5 +20,4 @@ final class RegionTest {
             org.hamcrest.Matchers.is(true)
         );
     }
-
 }

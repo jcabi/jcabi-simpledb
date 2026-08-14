@@ -24,14 +24,11 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Single item/row in a SimpleDB table.
- *
  * @since 0.1
- * @checkstyle ClassDataAbstractionCoupling (500 lines)
  */
 @Immutable
 @Loggable(Loggable.DEBUG)
 @EqualsAndHashCode(of = { "credentials", "table", "label" })
-@SuppressWarnings("PMD.TooManyMethods")
 final class AwsItem implements Item {
 
     /**
@@ -56,10 +53,8 @@ final class AwsItem implements Item {
      * @param item Item name
      */
     AwsItem(final Credentials creds, final String tbl,
-        final String item) {
-        this.credentials = creds;
-        this.table = tbl;
-        this.label = item;
+        final com.amazonaws.services.simpledb.model.Item item) {
+        this(creds, tbl, item.getName());
     }
 
     /**
@@ -68,9 +63,10 @@ final class AwsItem implements Item {
      * @param tbl Table name
      * @param item Item name
      */
-    AwsItem(final Credentials creds, final String tbl,
-        final com.amazonaws.services.simpledb.model.Item item) {
-        this(creds, tbl, item.getName());
+    AwsItem(final Credentials creds, final String tbl, final String item) {
+        this.credentials = creds;
+        this.table = tbl;
+        this.label = item;
     }
 
     @Override
@@ -95,12 +91,12 @@ final class AwsItem implements Item {
 
     @Override
     public boolean containsKey(final Object key) {
-        return this.containsKey(key);
+        return this.keySet().contains(key);
     }
 
     @Override
     public boolean containsValue(final Object value) {
-        return this.containsValue(value);
+        return this.values().contains(value);
     }
 
     @Override
@@ -116,7 +112,6 @@ final class AwsItem implements Item {
     }
 
     @Override
-    @SuppressWarnings("PMD.UnnecessaryLocalRule")
     public String put(final String key, final String value) {
         final String before = this.get(key);
         final ConcurrentMap<String, String> map =
@@ -127,7 +122,6 @@ final class AwsItem implements Item {
     }
 
     @Override
-    @SuppressWarnings("PMD.UnnecessaryLocalRule")
     public String remove(final Object key) {
         final String before = this.get(key);
         this.credentials.aws().deleteAttributes(
@@ -173,7 +167,7 @@ final class AwsItem implements Item {
         final Set<Map.Entry<String, String>> entries = this.entrySet();
         final Set<String> keys = new HashSet<>(entries.size());
         for (final Map.Entry<String, String> entry : entries) {
-            keys.add(entry.getValue());
+            keys.add(entry.getKey());
         }
         return keys;
     }
@@ -207,5 +201,4 @@ final class AwsItem implements Item {
         }
         return entries;
     }
-
 }
