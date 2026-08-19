@@ -167,7 +167,6 @@
             <version>0.30.11</version>
             <configuration>
               <excludes>
-                <exclude>findbugs:.*</exclude>
                 <exclude>duplicatefinder:.*</exclude>
               </excludes>
             </configuration>
