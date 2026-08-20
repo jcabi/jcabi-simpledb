@@ -100,10 +100,6 @@ final class RegionITCase {
         }
     }
 
-    /**
-     * Make domain.
-     * @return Domain
-     */
     private Domain domain() {
         Assumptions.assumeFalse(RegionITCase.KEY.isEmpty());
         final Region region = new Region.Simple(

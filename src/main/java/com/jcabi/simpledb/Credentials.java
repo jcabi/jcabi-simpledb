@@ -231,10 +231,6 @@ public interface Credentials {
                 .build();
         }
 
-        /**
-         * Configuration of the endpoint.
-         * @return Configuration
-         */
         private AwsClientBuilder.EndpointConfiguration config() {
             return new AwsClientBuilder.EndpointConfiguration(
                 this.endpoint, Regions.US_EAST_1.getName()
