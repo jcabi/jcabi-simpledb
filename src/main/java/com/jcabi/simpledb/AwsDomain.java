@@ -13,6 +13,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Single table in SimpleDB, through AWS SDK.
+ *
  * @since 0.1
  */
 @Immutable
@@ -32,6 +33,7 @@ final class AwsDomain implements Domain {
 
     /**
      * Public ctor.
+     *
      * @param creds Credentials
      * @param name Domain name
      */

@@ -17,6 +17,7 @@ import org.mockito.hamcrest.MockitoHamcrest;
 
 /**
  * Test case for {@link AwsItem}.
+ *
  * @since 0.1
  */
 final class AwsItemTest {

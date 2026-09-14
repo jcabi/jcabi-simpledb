@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 
 /**
  * Test case for {@link AwsDomain}.
+ *
  * @since 0.1
  */
 final class AwsDomainTest {

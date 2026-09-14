@@ -13,6 +13,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Iterator of items in SimpleDB.
+ *
  * @since 0.1
  */
 @Loggable(Loggable.DEBUG)
@@ -41,6 +42,7 @@ final class AwsIterator implements Iterator<Item> {
 
     /**
      * Public ctor.
+     *
      * @param creds Credentials
      * @param name Domain name
      * @param req Request
@@ -73,7 +75,7 @@ final class AwsIterator implements Iterator<Item> {
         return new AwsItem(
             this.credentials,
             this.table,
-            this.result.getItems().remove(0)
+            this.result.getItems().remove(0).getName()
         );
     }
 

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Amazon SimpleDB domain abstraction.
  *
- * <p>Get an item from the domain and manipulate it, for example:
+ * <p>Get an item from the domain and manipulate it, for example:</p>
  *
  * <pre> Region region = new Region.Simple(...);
  * Domain domain = region.domain("employees");
@@ -38,6 +38,7 @@ public interface Domain {
 
     /**
      * Get its name.
+     *
      * @return Name of domain
      */
     @NotNull(message = "name is never NULL")
@@ -45,6 +46,7 @@ public interface Domain {
 
     /**
      * Get item.
+     *
      * @param name Name of the item
      * @return Item just created
      */
@@ -53,6 +55,7 @@ public interface Domain {
 
     /**
      * Select multiple items.
+     *
      * @param request Select request
      * @return Items found
      */

@@ -19,7 +19,7 @@ import org.apache.commons.lang3.Validate;
 /**
  * Amazon SimpleDB credentials.
  *
- * <p>It is recommended to use {@link Credentials.Simple} in most cases.
+ * <p>It is recommended to use {@link Credentials.Simple} in most cases.</p>
  *
  * @since 0.1
  */
@@ -37,6 +37,7 @@ public interface Credentials {
 
     /**
      * Build AWS client.
+     *
      * @return Amazon Dynamo DB client
      */
     @NotNull
@@ -44,6 +45,7 @@ public interface Credentials {
 
     /**
      * Simple implementation.
+     *
      * @since 0.1
      */
     @Immutable
@@ -68,6 +70,7 @@ public interface Credentials {
 
         /**
          * Public ctor, with "us-east-1" region.
+         *
          * @param akey AWS key
          * @param scrt Secret
          */
@@ -77,6 +80,7 @@ public interface Credentials {
 
         /**
          * Public ctor.
+         *
          * @param akey AWS key
          * @param scrt Secret
          * @param reg Region
@@ -123,6 +127,7 @@ public interface Credentials {
 
     /**
      * Assumed AWS IAM role.
+     *
      * @see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/role-usecase-ec2app.html">Granting Applications that Run on Amazon EC2 Instances Access to AWS Resources</a>
      * @since 0.1
      */
@@ -145,6 +150,7 @@ public interface Credentials {
 
         /**
          * Public ctor.
+         *
          * @param reg Region
          */
         @SuppressWarnings("PMD.ConstructorOnlyInitializesOrCallOtherConstructors")
@@ -174,6 +180,7 @@ public interface Credentials {
 
     /**
      * With explicitly specified endpoint.
+     *
      * @since 0.1
      */
     @Immutable
@@ -193,6 +200,7 @@ public interface Credentials {
 
         /**
          * Public ctor.
+         *
          * @param creds Original credentials
          * @param port Port number for localhost
          */
@@ -202,6 +210,7 @@ public interface Credentials {
 
         /**
          * Public ctor.
+         *
          * @param creds Original credentials
          * @param pnt Endpoint
          */

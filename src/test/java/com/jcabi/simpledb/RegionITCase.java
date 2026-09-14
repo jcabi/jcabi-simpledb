@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Integration case for {@link Region}.
+ *
  * @since 0.1
  */
 final class RegionITCase {

@@ -24,6 +24,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Single item/row in a SimpleDB table.
+ *
  * @since 0.1
  */
 @Immutable
@@ -48,17 +49,7 @@ final class AwsItem implements Item {
 
     /**
      * Public ctor.
-     * @param creds Credentials
-     * @param tbl Table name
-     * @param item Item name
-     */
-    AwsItem(final Credentials creds, final String tbl,
-        final com.amazonaws.services.simpledb.model.Item item) {
-        this(creds, tbl, item.getName());
-    }
-
-    /**
-     * Public ctor.
+     *
      * @param creds Credentials
      * @param tbl Table name
      * @param item Item name

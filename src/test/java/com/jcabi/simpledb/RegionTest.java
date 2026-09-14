@@ -4,20 +4,23 @@
  */
 package com.jcabi.simpledb;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 /**
  * Test case for {@link Region}.
+ *
  * @since 0.1
  */
 final class RegionTest {
 
     @Test
     void works() {
-        org.hamcrest.MatcherAssert.assertThat(
+        MatcherAssert.assertThat(
             "region should exist",
             true,
-            org.hamcrest.Matchers.is(true)
+            Matchers.is(true)
         );
     }
 }

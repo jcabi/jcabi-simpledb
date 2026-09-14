@@ -14,10 +14,10 @@ import lombok.ToString;
 /**
  * Amazon SimpleDB region.
  *
- * <p>It is recommended to use {@link Region.Simple} in most cases.
+ * <p>It is recommended to use {@link Region.Simple} in most cases.</p>
  *
  * <p>You can use {@link #aws()} method to get access to Amazon SimpleDB
- * client directly.
+ * client directly.</p>
  *
  * @since 0.1
  */
@@ -26,6 +26,7 @@ public interface Region {
 
     /**
      * Get SimpleDB client.
+     *
      * @return The client
      */
     @NotNull(message = "AWS SimpleDB client is never NULL")
@@ -33,6 +34,7 @@ public interface Region {
 
     /**
      * Get one domain.
+     *
      * @param name Domain name
      * @return Domain
      */
@@ -41,6 +43,7 @@ public interface Region {
 
     /**
      * Simple region, basic implementation.
+     *
      * @since 0.1
      */
     @Immutable
@@ -56,6 +59,7 @@ public interface Region {
 
         /**
          * Public ctor.
+         *
          * @param creds Credentials
          */
         public Simple(@NotNull(message = "credentials can't be NULL")

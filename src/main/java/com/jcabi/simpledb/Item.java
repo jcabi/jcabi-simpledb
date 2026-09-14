@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
  * <p>The class is immutable, which means that every call to
  * {@link Map#put(Object, Object)} changes
  * data in Amazon, but doesn't change the object. The object will contain
- * dirty data right after PUT operation, and should not be used anymore.
+ * dirty data right after PUT operation, and should not be used anymore.</p>
  *
  * @since 0.1
  */
@@ -23,6 +23,7 @@ public interface Item extends Map<String, String> {
 
     /**
      * Get its name.
+     *
      * @return Name of the item
      */
     @NotNull(message = "name is never NULL")
