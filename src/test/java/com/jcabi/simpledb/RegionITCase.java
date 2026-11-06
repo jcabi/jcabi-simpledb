@@ -35,9 +35,9 @@ final class RegionITCase {
     void putsAndRemovesIndividualItems() {
         final Domain domain = this.domain();
         try {
-            final String name = RandomStringUtils.randomAlphanumeric(10);
-            final String attr = RandomStringUtils.randomAlphabetic(8);
-            final String value = RandomStringUtils.randomAlphanumeric(10);
+            final String name = RandomStringUtils.secure().nextAlphanumeric(10);
+            final String attr = RandomStringUtils.secure().nextAlphabetic(8);
+            final String value = RandomStringUtils.secure().nextAlphanumeric(10);
             for (int idx = 0; idx < 2; ++idx) {
                 domain.item(name).put(attr, value);
                 MatcherAssert.assertThat(
@@ -109,7 +109,7 @@ final class RegionITCase {
         final Domain domain = region.domain(
             String.format(
                 "jcabi-test-%s",
-                RandomStringUtils.randomAlphabetic(5)
+                RandomStringUtils.secure().nextAlphabetic(5)
             )
         );
         domain.create();
