@@ -51,14 +51,15 @@ final class AwsIterator implements Iterator<Item> {
         final SelectRequest req) {
         this.credentials = creds;
         this.table = name;
-        this.request = req;
+        this.request = req.clone();
     }
 
     @Override
     public boolean hasNext() {
         if (this.result == null) {
             this.result = this.credentials.aws().select(this.request);
-        } else if (this.result.getItems().isEmpty()
+        }
+        while (this.result.getItems().isEmpty()
             && this.result.getNextToken() != null) {
             this.result = this.credentials.aws().select(
                 this.request.withNextToken(this.result.getNextToken())
