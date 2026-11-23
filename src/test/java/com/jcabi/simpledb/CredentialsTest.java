@@ -6,6 +6,7 @@ package com.jcabi.simpledb;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -34,5 +35,19 @@ final class CredentialsTest {
             "eu-west-1"
         );
         MatcherAssert.assertThat("should be not null", creds.aws(), Matchers.notNullValue());
+    }
+
+    @Test
+    void doesNotLeakSecretInValidationError() {
+        final String secret = "this-secret-must-never-end-up-in-logs!!!";
+        MatcherAssert.assertThat(
+            "secret value must not be echoed in the exception message",
+            Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> new Credentials.Simple("ABABABABABABABABABAB", secret),
+                "invalid AWS secret must be rejected"
+            ).getMessage(),
+            Matchers.not(Matchers.containsString(secret))
+        );
     }
 }
