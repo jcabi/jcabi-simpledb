@@ -98,7 +98,7 @@ public interface Credentials {
             this.key = akey;
             Validate.matchesPattern(
                 scrt, "[a-zA-Z0-9+/=]{40}",
-                "Invalid AWS secret key '%s'", scrt
+                "Invalid AWS secret key, expected 40 characters of [a-zA-Z0-9+/=]"
             );
             this.secret = scrt;
             Validate.matchesPattern(
